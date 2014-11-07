@@ -14,10 +14,10 @@ namespace MonPanier.Controllers
         // GET: Region
         public ActionResult Index()
         {
-            var region = db.Regions.ToList();
+            var produits = db.Regions.ToList();
 
 
-            return View(region);
+            return View(produits);
         }
     }
 }

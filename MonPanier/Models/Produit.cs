@@ -8,14 +8,9 @@ namespace MonPanier.Models
 {
     public class Produit
     {
-        public int Id { get; set; }
+        public int ProduitId { get; set; }
         public string Nom { get; set; }
         public string Type { get; set; }
-        public Region Region { get; set; }
     }   
 
-    public class ProduitsDBContext : DbContext
-    {
-        public DbSet<Produit> Produits { get; set; }
-    }
 }
