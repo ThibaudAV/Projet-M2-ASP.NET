@@ -18,7 +18,7 @@ namespace MonPanier
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
         {
-            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
+            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<MyContext>()));
             // Configurer la logique de validation pour les noms d'utilisateur
             manager.UserValidator = new UserValidator<ApplicationUser>(manager)
             {
@@ -28,11 +28,11 @@ namespace MonPanier
             // Configurer la logique de validation pour les mots de passe
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
-                RequireDigit = true,
-                RequireLowercase = true,
-                RequireUppercase = true,
+                RequiredLength = 3,
+                RequireNonLetterOrDigit = false,
+                RequireDigit = false,
+                RequireLowercase = false,
+                RequireUppercase = false,
             };
             // Inscrire les fournisseurs d'authentification à 2 facteurs. Cette application utilise le téléphone et les e-mails comme procédure de réception de code pour confirmer l'utilisateur
             // Vous pouvez indiquer votre propre fournisseur et vous connecter ici.

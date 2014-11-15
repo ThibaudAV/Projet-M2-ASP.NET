@@ -17,7 +17,7 @@ namespace MonPanier
         public void ConfigureAuth(IAppBuilder app)
         {
             // Configurer le contexte de base de données et le gestionnaire des utilisateurs pour utiliser une seule instance par demande
-            app.CreatePerOwinContext(ApplicationDbContext.Create);
+            app.CreatePerOwinContext(MyContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
 
             // Autoriser l’application à utiliser un cookie pour stocker des informations pour l’utilisateur connecté

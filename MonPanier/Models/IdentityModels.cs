@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
 
 namespace MonPanier.Models
 {
@@ -28,5 +29,14 @@ namespace MonPanier.Models
         {
             return new ApplicationDbContext();
         }
+
+        // CRUD
+        public DbSet<Produit> Produits { get; set; }
+        public DbSet<Region> Regions { get; set; }
+        public DbSet<Categorie> Categories { get; set; }
+        //public DbSet<Magasin> Magasins { get; set; }
+        public DbSet<ContenuPanier> ContenuPaniers { get; set; }
+        public DbSet<Panier> Paniers { get; set; }
+
     }
 }

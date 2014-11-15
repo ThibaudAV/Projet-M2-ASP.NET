@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@section style {
+    @Styles.Render("~/MapRegion/css")
+}
+
+
+<h2>Choisicer votre region</h2>
+
+
+
+<div id="francemap" style="width: 500px; height: 500px;"></div>
+
+
+@section Scripts {
+    @Scripts.Render("~/MapRegion/jqueryModule")
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#francemap').vectorMap({
+            map: 'france_fr',
+            hoverOpacity: 0.5,
+            hoverColor: "#EC0000",
+            backgroundColor: "#ffffff",
+            color: "#FACC2E",
+            borderColor: "#000000",
+            selectedColor: "#EC0000",
+            enableZoom: false   ,
+            showTooltip: true,
+            onRegionClick: function (element, code, region) {
+                var message = 'Région : "'
+		            + region
+		            + '" || Id : "'
+		            + code
+					+ '"';
+                var url = '@Url.Action("Liste", "Region/_id_")'.replace('_id_', code);
+
+                window.location.href = url;
+
+            }
+        });
+    });
+</script>
+
+}

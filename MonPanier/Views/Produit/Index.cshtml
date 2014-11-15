@@ -1,0 +1,73 @@
+﻿@model IEnumerable<MonPanier.Models.Produit>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categorie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prix)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateValid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Regions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EnLigne)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categorie.Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prix)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateValid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantite)
+        </td>
+        <td>
+            @foreach (var region in item.Regions)
+            {
+
+                <span class="label label-primary">@region.Nom</span><br />
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EnLigne)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProduitId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProduitId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProduitId })
+        </td>
+    </tr>
+}
+
+</table>

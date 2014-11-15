@@ -21,15 +21,31 @@ namespace MonPanier
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
+                      "~/Scripts/TwitterBootstrapMvcJs.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+            bundles.Add(new StyleBundle("~/MapRegion/css").Include(
+                      "~/Content/jqvmap.css"));
+            bundles.Add(new StyleBundle("~/MapRegion/jqueryModule").Include(
+                      "~/Scripts/jquery.vmap.js",
+                      "~/Scripts/jquery.vmap.france.js"
+                      ));
+
+            bundles.Add(new StyleBundle("~/Select2/css").Include(
+                      "~/Content/select2.css",
+                      "~/Content/select2-bootstrap.css"));
+            bundles.Add(new StyleBundle("~/Select2/js").Include(
+                      "~/Scripts/select2.js",
+                      "~/Scripts/select2_locale_fr.js"
+                      ));
+
             // Définissez EnableOptimizations sur False pour le débogage. Pour plus d'informations,
             // visitez http://go.microsoft.com/fwlink/?LinkId=301862
-            BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = false;
         }
     }
 }

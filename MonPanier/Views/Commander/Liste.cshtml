@@ -1,0 +1,114 @@
+﻿@model MonPanier.Models.Region
+@{
+    ViewBag.Title = "Region : " + @Model.Nom;
+}
+
+@helper Active(int In, int? Select)
+{
+    if (In == Select)
+    {
+        @("active")
+    }
+}
+
+<div class="page-header">
+    <h1>Produit de la region @Model.Nom <small> </small></h1>
+</div>
+
+
+<div class="row">
+
+    <div class="col-md-3">
+        <div class="list-group">
+            <p class="list-group-item lead">Categories :</p>
+            <a href="@Url.Action("Liste", "Region/" + @ViewBag.idRegion)" class="list-group-item @if (@ViewBag.CategorieId == null) { @("active") }">Toutes</a>
+            @foreach (var categorie in ViewBag.Categories)
+            {
+                <a href="@Url.Action("Categorie", "Region/" + @ViewBag.idRegion, new { id = @categorie.CategorieId })" class="list-group-item @Active(@categorie.CategorieId,@ViewBag.CategorieId)">@categorie.Nom</a>
+            }
+        </div>
+
+
+
+    </div>
+
+    <div class="col-md-9">
+
+        @*<div class="row carousel-holder">
+
+                <div class="col-md-12">
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                            </div>
+                            <div class="item">
+                                <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                            </div>
+                            <div class="item">
+                                <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                            </div>
+                        </div>
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>*@
+
+        <div class="row">
+            @if (Model.Produits.Count == 0)
+            {
+
+                <div class="col-sm-4 col-lg-4 col-md-4">
+                    <h4>Pas de produit pour cette region</h4>
+                </div>
+            }
+
+            @foreach (var produit in Model.Produits)
+            {
+                if (ViewBag.CategorieId == produit.CategorieId || ViewBag.CategorieId == null)
+                {
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="http://placehold.it/320x150" alt="">
+                            <div class="caption">
+                                <h4 class="pull-right">@produit.Prix</h4>
+                                <h4>
+                                    <a href="@Url.Action("Produit", "Region/" + @ViewBag.idRegion, new { id = @produit.ProduitId })"> @produit.Nom</a>
+                                </h4>
+                                <p>@produit.Description</p>
+                            </div>
+                            <div class="ratings">
+                                <p>@produit.Categorie.Nom</p>
+                                <p class="pull-right">3 reviews</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+
+
+        </div>
+
+    </div>
+
+
+</div>

@@ -5,12 +5,32 @@
     {
     @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
+    
+    
+        using (var nav = Html.Bootstrap().Begin(new Nav().Class("navbar-nav").SetLinksActiveByController()))
+        {
+            using (var dd = nav.BeginDropDown(new DropDown("" + User.Identity.GetUserName() + "")))
+            {
+                @dd.ActionLink("Mon Magasin", "Index", "Magasin")
+                @dd.ActionLink("Mes Produits", "Index", "Produit")
+                @dd.ActionLink("Mon Compte", "Manage", "Account")
+                if (User.IsInRole("Admin"))
+                {
+                    @dd.Header("Admin")
+                    @dd.ActionLink("Gestions des Categories", "Index", "Categorie")
+                }
+            }
+            @nav.Link("Se déconnecter", "javascript:document.getElementById('logoutForm').submit()")
+        }
+
+
+
+    @*<ul class="nav navbar-nav navbar-right">
         <li>
             @Html.ActionLink("Bonjour " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Administrer" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Se déconnecter</a></li>
-    </ul>
+    </ul>*@
     }
 }
 else

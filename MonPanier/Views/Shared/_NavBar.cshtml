@@ -1,0 +1,52 @@
+@helper ActiveItem(string actionName, string controllerName, string areaName)
+{
+    if (ViewContext.RouteData.Values["action"].ToString() == actionName &&
+            ViewContext.RouteData.Values["controller"].ToString() == controllerName &&
+            (ViewContext.RouteData.DataTokens["area"] == null || ViewContext.RouteData.DataTokens["area"].ToString() == areaName))
+    {
+        @:active
+    }
+}
+
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Partage Ton Potage", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+
+            
+            @using (var nav = Html.Bootstrap().Begin(new Nav().Class("navbar-nav").SetLinksActiveByControllerAndAction()))
+            {
+                @nav.ActionLink("Accueil", "Index", "Home")
+            }
+            @using (var nav = Html.Bootstrap().Begin(new Nav().Class("navbar-nav").SetLinksActiveByController()))
+            {
+                @nav.ActionLink("Commander", "Index", "Commander")
+                using (var dd = nav.BeginDropDown(new DropDown("Magasin").AlignTo("right").ButtonBlock()))
+                {
+                    @*@dd.Header("Some header")*@
+                    @dd.ActionLink("Magasins par regions", "Index", "Commander")
+                    @dd.ActionLink("Cartes des Magasins", "Index", "Magasin")
+                    @dd.ActionLink("Tous les Magasins", "Index", "Magasin")
+                    @*@dd.Divider()*@
+                }
+            }
+            @using (var nav = Html.Bootstrap().Begin(new Nav().Class("navbar-nav").SetLinksActiveByControllerAndAction()))
+            {
+                @nav.ActionLink("À propos de", "About", "Home")
+                @nav.ActionLink("Contact", "Contact", "Home")
+            }
+           
+
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+</div>
+

@@ -91,6 +91,10 @@ namespace MonPanier.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+
+                user.NomMagasin = "Magasin de " + model.Email;
+                user.DescriptionMagasin = "Bienvenu dans le magasin de " + model.Email;
+
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
