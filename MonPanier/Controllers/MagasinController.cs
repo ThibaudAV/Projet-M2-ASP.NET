@@ -5,12 +5,13 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
 namespace MonPanier.Controllers
 {
-    [Authorize]
+    
     public class MagasinController : Controller
     {
 
@@ -23,16 +24,18 @@ namespace MonPanier.Controllers
 
         }
 
+        [Authorize]
         // GET: Magasin
-        public ActionResult Index()
+        public ActionResult My()
         {
 
             var currentUser = manager.FindById(User.Identity.GetUserId());
 
-
-            return View(currentUser);
+           ViewBag.isMyMagasin = true;
+           
+            return View("Index",currentUser);
         }
-
+        [Authorize]
         // GET: Magasin
         public ActionResult Edit()
         {
@@ -43,6 +46,7 @@ namespace MonPanier.Controllers
             return View(currentUser);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Edit([Bind(Include = "NomMagasin,DescriptionMagasin")] ApplicationUser applicationUser)
         {
@@ -57,6 +61,33 @@ namespace MonPanier.Controllers
                 return RedirectToAction("Index");
             }
             return View(applicationUser);
+        }
+
+        public ActionResult All()
+        {
+
+            var magasins = manager.Users.ToList();
+
+            return View(magasins);
+        }
+        public ActionResult Index(string id)
+        {
+
+            var magasin = manager.FindById(id);
+            if (magasin == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            
+            if (id == User.Identity.GetUserId())
+            {
+                ViewBag.isMyMagasin = true;
+            }
+            else
+            {
+                ViewBag.isMyMagasin = false;
+            }
+            return View(magasin);
         }
     }
 }

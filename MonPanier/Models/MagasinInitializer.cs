@@ -21,29 +21,45 @@ namespace MonPanier.Models
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context)); 
             var RoleManager = new RoleManager<IdentityRole>(new 
                                           RoleStore<IdentityRole>(context));
-            string email = "admin@admin.fr";
-            string name = "Admin";
-            string password = "123456";
+
+            string RAdmin = "Admin";
+            string RUser = "User";
  
             //Create Role Admin if it does not exist
-            if (!RoleManager.RoleExists(name))
+            if (!RoleManager.RoleExists(RAdmin))
             {
-                var roleresult = RoleManager.Create(new IdentityRole(name));
+                var roleresult = RoleManager.Create(new IdentityRole(RAdmin));
+            }
+            //Create Role User if it does not exist
+            if (!RoleManager.RoleExists(RUser))
+            {
+                var roleresult = RoleManager.Create(new IdentityRole(RUser));
             }
             //Create User=Admin with password=123456
             var user = new ApplicationUser();
-            user.UserName = email;
-            user.Email = email;
-            var adminresult = UserManager.Create(user, password);
+            user.UserName = "admin@admin.fr";
+            user.Email = "admin@admin.fr";
+            user.NomMagasin = "Casa Bio";
+            var adminresult = UserManager.Create(user, "123456");
+
+            // Un 2e User simple 
+            var user2 = new ApplicationUser();
+            user2.UserName = "Toto";
+            user2.Email = "toto@toto.fr";
+            user2.NomMagasin = "Chez Toto";
+            var userresult = UserManager.Create(user2, "123456");
+
     
             //Add User Admin to Role Admin
             if (adminresult.Succeeded)
             {
-                var result = UserManager.AddToRole(user.Id, name);
+                var result = UserManager.AddToRole(user.Id, RAdmin);
+            }
+            if (userresult.Succeeded)
+            {
+                var result = UserManager.AddToRole(user2.Id, RUser);
             }
             base.Seed(context);
-
-
 
 
             // Regions
@@ -95,93 +111,64 @@ namespace MonPanier.Models
             context.SaveChanges();
 
 
-
             // Produits
-            //var produits = new List<Produit>
-            //{
-            //    new Produit{Nom = "Pomme",CategorieId = 1, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01") , Regions = new List<Region>()},
+            var produits = new List<Produit>
+            {
+                new Produit{
+                    Nom = "Pomme",
+                    CategorieId = 1, 
+                    Description = "Pomme fraiche comme un poisson" , 
+                    Prix = 10,  
+                    DateValid = DateTime.Parse("2013-09-01") , 
+                    Regions = new List<Region>(),
+                    Quantite = 10,
+                    ApplicationUser = user,
+                    EnLigne = true
+                },
+                new Produit{
+                    Nom = "Tomate",
+                    CategorieId = 2, 
+                    Description = "Tomate en Or" , 
+                    Prix = 10000,  
+                    DateValid = DateTime.Parse("2013-09-01") , 
+                    Regions = new List<Region>(),
+                    Quantite = 1,
+                    ApplicationUser = user2,
+                    EnLigne = true
+                }
             //    new Produit{Nom = "Noix",CategorieId = 1, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
             //    new Produit{Nom = "Pomme de terre",CategorieId = 2, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //    new Produit{Nom = "Tomate",CategorieId = 2, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //    new Produit{Nom = "Pates",CategorieId = 1, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //    new Produit{Nom = "qsd",CategorieId = 2, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //    new Produit{Nom = "qefes fe zef ",CategorieId = 3, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //    new Produit{Nom = "sssss",CategorieId = 4, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //    new Produit{Nom = "ttt",CategorieId = 1, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //    new Produit{Nom = "ttt",CategorieId = 2, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //    new Produit{Nom = "sssss",CategorieId = 4, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //    new Produit{Nom = "ttt",CategorieId = 2, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //    new Produit{Nom = "ttt",CategorieId = 1, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //    new Produit{Nom = "qef qsef qsef s",CategorieId = 3, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //    new Produit{Nom = "ttt",CategorieId = 4, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //    new Produit{Nom = "sss",CategorieId = 4, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //    new Produit{Nom = "ttt",CategorieId = 3, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //    new Produit{Nom = "sssssss",CategorieId = 4, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //    new Produit{Nom = "ttt",CategorieId = 1, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //    new Produit{Nom = "fdghgwdsgfxdgwsf",CategorieId = 2, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //    new Produit{Nom = "ttt",CategorieId = 2, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //    new Produit{Nom = "ttsdghfdsgdst",CategorieId = 4, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //    new Produit{Nom = "tsdfgds xgrstdhxwdfgtt",CategorieId = 3, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //    new Produit{Nom = "tsdrgsdfdhdrstgt",CategorieId = 4, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //    new Produit{Nom = "ttqsrfqst",CategorieId = 1, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //    new Produit{Nom = "ttsfeq fqse t",CategorieId = 2, Description = "" , Prix = 0,  DateCreated = DateTime.Parse("2013-09-01"), Regions = new List<Region>()},
-            //};
+            };
 
-            //foreach (var temp in produits)
-            //{
-            //    context.Produits.Add(temp);
-            //}
-            //context.SaveChanges();
+            foreach (var temp in produits)
+            {
+                context.Produits.Add(temp);
+            }
+            context.SaveChanges();
 
             // On ajoute les regions a des produits
-            //AddOrUpdateRegon(context, "Pomme", "Alsace");
+            AddOrUpdateRegon(context, "Pomme", "Alsace");
+            AddOrUpdateRegon(context, "Pomme", "Lorraine");
+            AddOrUpdateRegon(context, "Tomate", "Basse-Normandie");
+            AddOrUpdateRegon(context, "Tomate", "Bourgogne");
+            AddOrUpdateRegon(context, "Tomate", "Haute-Normandie");
+            AddOrUpdateRegon(context, "Tomate", "Corse");
             //AddOrUpdateRegon(context, "Pomme", "Aquitaine");
             //AddOrUpdateRegon(context, "Pomme", "Auvergne");
             //AddOrUpdateRegon(context, "Pomme", "Basse-Normandie");
-            //AddOrUpdateRegon(context, "Pomme", "Bourgogne");
-            //AddOrUpdateRegon(context, "Pomme", "Bretagne");
-            //AddOrUpdateRegon(context, "Noix", "Centre");
-            //AddOrUpdateRegon(context, "Noix", "Champagne-Ardenne");
-            //AddOrUpdateRegon(context, "Noix", "Corse");
-            //AddOrUpdateRegon(context, "Noix", "Franche-Comté");
-            //AddOrUpdateRegon(context, "Noix", "Haute-Normandie");
-            //AddOrUpdateRegon(context, "Pomme", "Île-de-France");
-            //AddOrUpdateRegon(context, "Tomate", "Languedoc-Roussillon");
-            //AddOrUpdateRegon(context, "Tomate", "Limousin");
-            //AddOrUpdateRegon(context, "Tomate", "Lorraine");
-            //AddOrUpdateRegon(context, "Tomate", "Midi-Pyrénées");
-            //AddOrUpdateRegon(context, "Tomate", "Nord-Pas-de-Calais");
-            //AddOrUpdateRegon(context, "Pates", "Pays de la Loire");
-            //AddOrUpdateRegon(context, "Pates", "Picardie");
-            //AddOrUpdateRegon(context, "Pates", "Poitou-Charentes");
-            //AddOrUpdateRegon(context, "Pates", "Provence-Alpes-Côte d'Azur");
-            //AddOrUpdateRegon(context, "Pates", "Rhône-Alpes");
 
-            //AddOrUpdateRegon(context, "Noix", "Île-de-France");
-            //AddOrUpdateRegon(context, "Noix", "Languedoc-Roussillon");
-            //AddOrUpdateRegon(context, "Noix", "Limousin");
-            //AddOrUpdateRegon(context, "Noix", "Lorraine");
-            //AddOrUpdateRegon(context, "Noix", "Midi-Pyrénées");
-            //AddOrUpdateRegon(context, "Pates", "Nord-Pas-de-Calais");
-            //AddOrUpdateRegon(context, "Tomate", "Pays de la Loire");
-            //AddOrUpdateRegon(context, "Tomate", "Picardie");
-            //AddOrUpdateRegon(context, "Tomate", "Poitou-Charentes");
-            //AddOrUpdateRegon(context, "Tomate", "Provence-Alpes-Côte d'Azur");
-            //AddOrUpdateRegon(context, "Tomate", "Rhône-Alpes");
-
-            //context.SaveChanges();
+            context.SaveChanges();
 
         }
 
+
+        // ajoute une region a un produit
         void AddOrUpdateRegon(MyContext context, string NomProduit, string NomRegion)
         {
             var pro = context.Produits.Single(c => c.Nom == NomProduit);
             var reg = context.Regions.Single(i => i.Nom == NomRegion);
             if (reg != null)
                 reg.Produits.Add(pro);
-
-            //if (inst == null)
-            //    crs.Regions.Add(context.Regions.Single(i => i.Nom == NomRegion));
         }
     }
 }

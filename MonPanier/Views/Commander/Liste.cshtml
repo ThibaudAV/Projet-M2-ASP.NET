@@ -81,13 +81,22 @@
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
                             <img src="http://placehold.it/320x150" alt="">
+                            
+
                             <div class="caption">
                                 <h4 class="pull-right">@produit.Prix</h4>
                                 <h4>
                                     <a href="@Url.Action("Produit", "Region/" + @ViewBag.idRegion, new { id = @produit.ProduitId })"> @produit.Nom</a>
                                 </h4>
                                 <p>@produit.Description</p>
+                                
                             </div>
+                            @using (var dd = Html.Bootstrap().Begin(new DropDown("Action").ButtonBlock()))
+                            {
+                                @dd.ActionLink("Ajouet au Panier", "action1")
+                                @dd.Divider()
+                                @dd.ActionLink("Voir le magasin " + @produit.ApplicationUser.NomMagasin, "Index", "Magasin").RouteValues(new { id = @produit.ApplicationUser.Id })
+                            }
                             <div class="ratings">
                                 <p>@produit.Categorie.Nom</p>
                                 <p class="pull-right">3 reviews</p>

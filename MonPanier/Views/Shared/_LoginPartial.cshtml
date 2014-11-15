@@ -11,7 +11,7 @@
         {
             using (var dd = nav.BeginDropDown(new DropDown("" + User.Identity.GetUserName() + "")))
             {
-                @dd.ActionLink("Mon Magasin", "Index", "Magasin")
+                @dd.ActionLink("Mon Magasin", "My", "Magasin")
                 @dd.ActionLink("Mes Produits", "Index", "Produit")
                 @dd.ActionLink("Mon Compte", "Manage", "Account")
                 if (User.IsInRole("Admin"))

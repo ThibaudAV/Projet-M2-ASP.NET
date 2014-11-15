@@ -13,8 +13,19 @@
                     @Model.NomMagasin
                     <p class="lead">@Model.DescriptionMagasin</p>
                 </h1>
-                <p class="lead"><a href="@Url.Action("Edit", "Magasin")" class="btn btn-default">Modifier mon Magasin</a>
-                    <a href="@Url.Action("Index", "Produit")" class="btn btn-default">Mes Produits</a></p>
+
+                <p class="lead">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (@ViewBag.isMyMagasin)
+                        {
+                            <a href="@Url.Action("Edit", "Magasin")" class="btn btn-default">Modifier mon Magasin</a>
+                            <a href="@Url.Action("Index", "Produit")" class="btn btn-default">Mes Produits</a>
+                        }
+                    }
+
+                
+                </p>
             </div>
             <div class="col-md-5">
                 <div class="well well-lg">
@@ -64,7 +75,18 @@
                                 <li><a href="#"><i class="glyphicon glyphicon-comment"></i> 4 Comments</a></li>
                                 <li><a href="#"><i class="glyphicon glyphicon-share"></i> 34 Shares</a></li></ul>
                             </div>
-                            <div class="col-xs-3"></div>
+                            <div class="col-xs-3">
+                                <a href="/" class="btn btn-success pull-right btnNext">Ajouter au Panier <i class="glyphicon glyphicon-shopping-cart"></i></a>
+
+                                @if (@ViewBag.isMyMagasin)
+                                {
+                                    using (var dd = Html.Bootstrap().Begin(new DropDown("Action").Class("pull-right")))
+                                    {
+                                        @dd.ActionLink("Modifier", "Edit", "Produit").RouteValues(new { id = produit.ProduitId }).PrependIcon("glyphicon glyphicon-edit")
+                                        @dd.ActionLink("Supprimer", "Delete", "Produit").RouteValues(new { id = produit.ProduitId }).PrependIcon("glyphicon glyphicon-trash")
+                                    }
+                                }
+                            </div>
                         </div>
                         <br><br>
                     </div>

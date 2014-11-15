@@ -642,6 +642,7 @@
     <Content Include="Views\Commander\Produit.cshtml" />
     <Content Include="Views\Magasin\Index.cshtml" />
     <Content Include="Views\Magasin\Edit.cshtml" />
+    <Content Include="Views\Magasin\All.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
