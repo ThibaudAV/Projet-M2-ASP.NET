@@ -109,6 +109,15 @@ namespace MonPanier.Controllers
 
                 return RedirectToAction("Index");
             }
+
+            var allRegionsList = db.Regions.ToList();
+            produitRegionsModel.AllRegions = allRegionsList.Select(o => new SelectListItem
+            {
+                Text = o.Nom,
+                Value = o.RegionId.ToString()
+            });
+
+
             ViewBag.CategorieId = new SelectList(db.Categories, "CategorieId", "Nom", produitRegionsModel.Produit.CategorieId);
             return View(produitRegionsModel);
 
@@ -200,6 +209,16 @@ namespace MonPanier.Controllers
 
                 return RedirectToAction("Index");
             }
+
+
+            var allRegionsList = db.Regions.ToList();
+            produitRegionsModel.AllRegions = allRegionsList.Select(o => new SelectListItem
+            {
+                Text = o.Nom,
+                Value = o.RegionId.ToString()
+            });
+
+
             ViewBag.CategorieId = new SelectList(db.Categories, "CategorieId", "Nom", produitRegionsModel.Produit.CategorieId);
             return View(produitRegionsModel);
 
