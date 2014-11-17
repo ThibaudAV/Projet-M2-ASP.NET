@@ -5,10 +5,10 @@
     {
     @Html.AntiForgeryToken()
 
-    
-    
         using (var nav = Html.Bootstrap().Begin(new Nav().Class("navbar-nav").SetLinksActiveByController()))
         {
+
+            @nav.ActionLink("5 ", "Index", "Panier").PrependIcon("glyphicon glyphicon-shopping-cart")
             using (var dd = nav.BeginDropDown(new DropDown("" + User.Identity.GetUserName() + "")))
             {
                 @dd.ActionLink("Mon Magasin", "My", "Magasin")

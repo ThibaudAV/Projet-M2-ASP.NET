@@ -62,6 +62,10 @@ namespace MonPanier.Models
         [Display(Name = "Produits")]
         public virtual ICollection<Produit> Produits { get; set; }
 
+        //[Display(Name = "Panier")]
+        //public int PanierId { get; set; }
+        //public virtual Panier Panier { get; set; }
+
     }
 
 

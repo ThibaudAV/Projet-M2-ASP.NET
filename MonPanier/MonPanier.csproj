@@ -175,6 +175,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CommanderController.cs" />
     <Compile Include="Controllers\MagasinController.cs" />
+    <Compile Include="Controllers\PanierController.cs" />
     <Compile Include="Controllers\ProduitController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -643,6 +644,11 @@
     <Content Include="Views\Magasin\Index.cshtml" />
     <Content Include="Views\Magasin\Edit.cshtml" />
     <Content Include="Views\Magasin\All.cshtml" />
+    <Content Include="Views\Panier\Create.cshtml" />
+    <Content Include="Views\Panier\Delete.cshtml" />
+    <Content Include="Views\Panier\Details.cshtml" />
+    <Content Include="Views\Panier\Edit.cshtml" />
+    <Content Include="Views\Panier\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

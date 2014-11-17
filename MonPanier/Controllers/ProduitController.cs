@@ -25,8 +25,6 @@ namespace MonPanier.Controllers
 
         }
 
-
-
         // GET: Produit
         public ActionResult Index()
         {
