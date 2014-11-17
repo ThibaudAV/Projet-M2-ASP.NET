@@ -98,10 +98,13 @@ namespace MonPanier.Models
             // Categories
             var categories = new List<Categorie>
             {
-                new Categorie{Nom = "Fruit"},
-                new Categorie{Nom = "Legume"},
-                new Categorie{Nom = "Féculant"},
-                new Categorie{Nom = "Noix"},
+                new Categorie{Nom = "Fruits"},
+                new Categorie{Nom = "Légumes"},
+                new Categorie{Nom = "Crèmerie"},
+                new Categorie{Nom = "Boissons"},
+                new Categorie{Nom = "Boulangerie & Pâtisserie"},
+                new Categorie{Nom = "Epicerie"},
+                new Categorie{Nom = "Traiteur"},
                 new Categorie{Nom = "Autres"},
             };
             foreach (var temp in categories)
