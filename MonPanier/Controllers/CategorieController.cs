@@ -80,7 +80,7 @@ namespace MonPanier.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CategorieId,Nom")] Categorie categorie)
-        {
+        {   
             if (ModelState.IsValid)
             {
                 db.Entry(categorie).State = EntityState.Modified;
