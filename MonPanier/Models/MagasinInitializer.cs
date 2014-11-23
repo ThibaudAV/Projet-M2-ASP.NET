@@ -53,10 +53,12 @@ namespace MonPanier.Models
             //Add User Admin to Role Admin
             if (adminresult.Succeeded)
             {
+                //Ajoute l'utilisateur 'user' en rôle Admin
                 var result = UserManager.AddToRole(user.Id, RAdmin);
             }
             if (userresult.Succeeded)
             {
+                // Ajoute l'utilisateur 'user2' en rôle User    
                 var result = UserManager.AddToRole(user2.Id, RUser);
             }
             base.Seed(context);
