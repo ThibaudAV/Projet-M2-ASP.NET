@@ -24,13 +24,41 @@ namespace MonPanier.Controllers
 
         }
 
-        // GET: Panier
+        // ajouter une produit au panier en Ajax 
+
+        public ActionResult AddToMyPanier(int produitId, int quantite)
+        {
+            if (ModelState.IsValid)
+            {
+                //on recupére le panier de l'utilisateur 
+                var currentUser = manager.FindById(User.Identity.GetUserId());
+                var paniers = db.Paniers.Include(p => p.ContenuPaniers).Where(p => p.ApplicationUser.Id == currentUser.Id);
+
+                var produit = db.Produits.Find(produitId);
+
+                var myPanier = paniers.First();
+
+                // creation du nouveau contenu du panier 
+                var contenuPanier = new ContenuPanier { Produit = produit, Quantite = quantite };
+
+                // on ajoute le contenu du panier au panier 
+                myPanier.ContenuPaniers.Add(contenuPanier);
+
+                // sauvegarde dans la bdd
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+
+        }
+
+        // GET: Le Panier de l'utilisateur
         public ActionResult Index()
         {
             var currentUser = manager.FindById(User.Identity.GetUserId());
 
             var paniers = db.Paniers.Include(p => p.ContenuPaniers).Where(p => p.ApplicationUser.Id == currentUser.Id);
-            return View(db.Paniers.ToList());
+
+            return View(paniers.First());
         }
 
         // GET: Panier/Details/5
@@ -109,12 +137,12 @@ namespace MonPanier.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Panier panier = db.Paniers.Find(id);
-            if (panier == null)
+            ContenuPanier contenuPanier = db.ContenuPaniers.Find(id);
+            if (contenuPanier == null)
             {
                 return HttpNotFound();
             }
-            return View(panier);
+            return View(contenuPanier);
         }
 
         // POST: Panier/Delete/5
@@ -122,8 +150,8 @@ namespace MonPanier.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Panier panier = db.Paniers.Find(id);
-            db.Paniers.Remove(panier);
+            ContenuPanier contenuPanier = db.ContenuPaniers.Find(id);
+            db.ContenuPaniers.Remove(contenuPanier);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

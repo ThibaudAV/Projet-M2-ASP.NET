@@ -17,10 +17,14 @@ namespace MonPanier.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+
+        MyContext db = new MyContext();
+        private UserManager<ApplicationUser> manager;
         private ApplicationUserManager _userManager;
 
         public AccountController()
         {
+            manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
         }
 
         public AccountController(ApplicationUserManager userManager)
@@ -106,6 +110,12 @@ namespace MonPanier.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirmez votre compte", "Confirmez votre compte en cliquant <a href=\"" + callbackUrl + "\">ici</a>");
 
+                    var currentUser = manager.FindById(user.Id);
+
+                    Panier userPanier = new Panier { ContenuPaniers = new List<ContenuPanier>(), ApplicationUser = currentUser };
+                    //nPanier.ApplicationUser = this;
+                    db.Paniers.Add(userPanier);
+                    db.SaveChanges();
                     return RedirectToAction("Index", "Home");
                 }
                 else

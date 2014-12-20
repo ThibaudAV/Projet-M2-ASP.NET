@@ -93,7 +93,7 @@
                             </div>
                             @using (var dd = Html.Bootstrap().Begin(new DropDown("Action").ButtonBlock()))
                             {
-                                @dd.ActionLink("Ajouet au Panier", "action1")
+                                @dd.ActionLink("Ajouet au Panier", "AddToMyPanier", "Panier").RouteValues(new { produitId = @produit.ProduitId, quantite = 1 })
                                 @dd.Divider()
                                 @dd.ActionLink("Voir le magasin " + @produit.ApplicationUser.NomMagasin, "Index", "Magasin").RouteValues(new { id = @produit.ApplicationUser.Id })
                             }

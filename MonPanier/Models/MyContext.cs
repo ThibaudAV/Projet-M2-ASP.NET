@@ -50,6 +50,7 @@ namespace MonPanier.Models
         }
 
 
+
         [Display(Name = "Nom du magasin")]
         public string NomMagasin { get; set; }
 
