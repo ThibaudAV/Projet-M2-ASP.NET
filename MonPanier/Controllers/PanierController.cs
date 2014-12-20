@@ -13,7 +13,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 namespace MonPanier.Controllers
 {
     [Authorize]
-    public class PanierController : Controller
+    public class PanierController : MasterController
     {
         private MyContext db = new MyContext();
         private UserManager<ApplicationUser> manager;

@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace MonPanier.Controllers
 {
-    public class CommanderController : Controller
+    public class CommanderController : MasterController
     {
         private MyContext db = new MyContext();
         // GET: Magasin

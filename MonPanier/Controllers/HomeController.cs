@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace MonPanier.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : MasterController
     {
         public ActionResult Index()
         {

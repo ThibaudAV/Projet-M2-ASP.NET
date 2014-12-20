@@ -8,7 +8,7 @@
         using (var nav = Html.Bootstrap().Begin(new Nav().Class("navbar-nav").SetLinksActiveByController()))
         {
 
-            @nav.ActionLink("5 ", "Index", "Panier").PrependIcon("glyphicon glyphicon-shopping-cart")
+            @nav.ActionLink((String) ViewBag.panierNbItem, "Index", "Panier").PrependIcon("glyphicon glyphicon-shopping-cart")
             using (var dd = nav.BeginDropDown(new DropDown("" + User.Identity.GetUserName() + "")))
             {
                 @dd.ActionLink("Mon Magasin", "My", "Magasin")
@@ -40,3 +40,4 @@ else
         <li>@Html.ActionLink("Se connecter", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }
+

@@ -11,8 +11,8 @@ using System.Web.Mvc;
 
 namespace MonPanier.Controllers
 {
-    
-    public class MagasinController : Controller
+
+    public class MagasinController : MasterController
     {
 
         private MyContext db = new MyContext();

@@ -11,7 +11,7 @@ using MonPanier.Models;
 namespace MonPanier.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class CategorieController : Controller
+    public class CategorieController : MasterController
     {
         private MyContext db = new MyContext();
 

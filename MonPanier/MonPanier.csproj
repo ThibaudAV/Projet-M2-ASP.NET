@@ -175,6 +175,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CommanderController.cs" />
     <Compile Include="Controllers\MagasinController.cs" />
+    <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\PanierController.cs" />
     <Compile Include="Controllers\ProduitController.cs" />
     <Compile Include="Global.asax.cs">

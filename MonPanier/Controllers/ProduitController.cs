@@ -14,7 +14,7 @@ using MonPanier.ViewModels;
 namespace MonPanier.Controllers
 {
     [Authorize]
-    public class ProduitController : Controller
+    public class ProduitController : MasterController
     {
         private MyContext db = new MyContext();
         private UserManager<ApplicationUser> manager;
