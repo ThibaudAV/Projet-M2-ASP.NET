@@ -261,9 +261,9 @@ namespace MonPanier.Controllers
         public ActionResult Manage(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Votre mot de passe a été modifié."
-                : message == ManageMessageId.SetPasswordSuccess ? "Votre mot de passe a été défini."
-                : message == ManageMessageId.RemoveLoginSuccess ? "La connexion externe a été supprimée."
+                message == ManageMessageId.ChangePasswordSuccess ? "Votre mot de passe à été modifié."
+                : message == ManageMessageId.SetPasswordSuccess ? "Votre mot de passe à été défini."
+                : message == ManageMessageId.RemoveLoginSuccess ? "La connexion externe à été supprimée."
                 : message == ManageMessageId.Error ? "Une erreur s'est produite."
                 : "";
             ViewBag.HasLocalPassword = HasPassword();

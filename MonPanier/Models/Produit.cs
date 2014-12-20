@@ -24,7 +24,7 @@ namespace MonPanier.Models
         [StringLength(50, MinimumLength = 3)]
         public string Nom { get; set; }
 
-        [Display(Name = "Déscription")]
+        [Display(Name = "Description")]
         public string Description { get; set; }
 
         [Required]
@@ -42,7 +42,7 @@ namespace MonPanier.Models
         public virtual Categorie Categorie { get; set; }
 
         [Required]
-        [Display(Name = "Quantité en unitée")]
+        [Display(Name = "Quantité en unité")]
         public int Quantite { get; set; }
 
         [Display(Name = "En Ligne / Hors Ligne")]
