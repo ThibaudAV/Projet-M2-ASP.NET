@@ -163,8 +163,8 @@ namespace MonPanier.Models
             context.SaveChanges();
 
             // On ajoute les regions a des produits
-            AddOrUpdateRegon(context, "Pomme", "Alsace");
-            AddOrUpdateRegon(context, "Pomme", "Lorraine");
+            AddOrUpdateRegon(context, "Orange bio", "Alsace");
+            AddOrUpdateRegon(context, "Orange bio", "Lorraine");
             AddOrUpdateRegon(context, "Tomate", "Basse-Normandie");
             AddOrUpdateRegon(context, "Tomate", "Bourgogne");
             AddOrUpdateRegon(context, "Tomate", "Haute-Normandie");
@@ -189,7 +189,7 @@ namespace MonPanier.Models
             var contenuPanier = new ContenuPanier{Produit = pro,Quantite= 10};
             var pro1 = context.Produits.Single(c => c.Nom == "Tomate");
             var contenuPanier1 = new ContenuPanier { Produit = pro1, Quantite = 10 };
-            var pro2 = context.Produits.Single(c => c.Nom == "Pomme");
+            var pro2 = context.Produits.Single(c => c.Nom == "Orange bio");
             var contenuPanier2 = new ContenuPanier { Produit = pro2, Quantite = 10 };
 
             userPanier.ContenuPaniers.Add(contenuPanier);
