@@ -175,6 +175,28 @@ namespace MonPanier.Models
 
             context.SaveChanges();
 
+
+            // Panier 
+
+            // on créé le panier de l'utilisateur 
+            Panier userPanier = new Panier { ContenuPaniers = new List<ContenuPanier>(), ApplicationUser = user };
+            //nPanier.ApplicationUser = this;
+            context.Paniers.Add(userPanier);
+
+
+            // contenu du panier 
+            var pro = context.Produits.Single(c => c.Nom == "Tomate");
+            var contenuPanier = new ContenuPanier{Produit = pro,Quantite= 10};
+            var pro1 = context.Produits.Single(c => c.Nom == "Tomate");
+            var contenuPanier1 = new ContenuPanier { Produit = pro1, Quantite = 10 };
+            var pro2 = context.Produits.Single(c => c.Nom == "Pomme");
+            var contenuPanier2 = new ContenuPanier { Produit = pro2, Quantite = 10 };
+
+            userPanier.ContenuPaniers.Add(contenuPanier);
+            userPanier.ContenuPaniers.Add(contenuPanier1);
+            userPanier.ContenuPaniers.Add(contenuPanier2);
+
+            context.SaveChanges();
         }
 
 

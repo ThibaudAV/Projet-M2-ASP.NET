@@ -25,7 +25,7 @@ namespace MonPanier
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap_theme.css",
                       "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/MapRegion/css").Include(
