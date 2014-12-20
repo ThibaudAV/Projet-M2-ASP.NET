@@ -54,7 +54,7 @@ namespace MonPanier.Models
         [Display(Name = "Nom du magasin")]
         public string NomMagasin { get; set; }
 
-        [Display(Name = "Déscription")]
+        [Display(Name = "Description")]
         public string DescriptionMagasin { get; set; }
 
         [Display(Name = "Note")]

@@ -120,14 +120,25 @@ namespace MonPanier.Models
             var produits = new List<Produit>
             {
                 new Produit{
-                    Nom = "Pomme",
+                    Nom = "Orange bio",
                     CategorieId = 1, 
-                    Description = "Pomme fraiche comme un poisson" , 
-                    Prix = 10,  
+                    Description = "Variété : Navel (produit vendu au kilo)" , 
+                    Prix = 3,  
                     DateValid = DateTime.Parse("2013-09-01") , 
                     Regions = new List<Region>(),
-                    Quantite = 10,
+                    Quantite = 100,
                     ApplicationUser = user,
+                    EnLigne = true
+                },
+                new Produit{
+                    Nom = "Pamplemousse rose bio",
+                    CategorieId = 2, 
+                    Description = "Tomate en Or" , 
+                    Prix = 4,  
+                    DateValid = DateTime.Parse("2013-09-01") , 
+                    Regions = new List<Region>(),
+                    Quantite = 1,
+                    ApplicationUser = user2,
                     EnLigne = true
                 },
                 new Produit{
