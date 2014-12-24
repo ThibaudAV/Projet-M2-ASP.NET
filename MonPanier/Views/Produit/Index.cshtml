@@ -10,7 +10,7 @@
 </div>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Ajouter un produit", "Create")
 </p>
 <table class="table">
     <tr>
@@ -66,9 +66,9 @@
             @Html.DisplayFor(modelItem => item.EnLigne)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProduitId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProduitId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProduitId })
+            @Html.ActionLink("Modifier", "Edit", new { id=item.ProduitId }) |
+            @Html.ActionLink("Détails", "Details", new { id=item.ProduitId }) |
+            @Html.ActionLink("Supprimer", "Delete", new { id=item.ProduitId })
         </td>
     </tr>
 }
