@@ -22,8 +22,17 @@ namespace MonPanier.Controllers
             if (requestContext.HttpContext.User.Identity.IsAuthenticated)
             {
                 var currentUser = requestContext.HttpContext.User.Identity.GetUserId();
-                var panier = db.Paniers.Where(p => p.ApplicationUser.Id == currentUser).First();
-                ViewData["panierNbItem"] = panier.ContenuPaniers.Count.ToString();
+
+                try
+                {
+                    var panier = db.Paniers.Where(p => p.ApplicationUser.Id == currentUser).First();
+                    ViewData["panierNbItem"] = panier.ContenuPaniers.Count.ToString();
+                }
+                catch (Exception)
+                {
+
+                    ViewData["panierNbItem"] = "Deco toi !";
+                }
             }
             else
                 ViewData["panierNbItem"] = "Vide";
