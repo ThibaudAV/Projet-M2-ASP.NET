@@ -5,12 +5,10 @@
 }
 
 <div class="page-header">
-    <h1>Details <small> </small></h1>
+    <h1>Détails du produit<small> </small></h1>
 </div>
 
 <div>
-    <h4>Produit</h4>
-    <hr />
     <dl class="dl-horizontal">
 
         <dt>
@@ -90,6 +88,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProduitId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Modifier", "Edit", new { id = Model.ProduitId }) |
+    @Html.ActionLink("Retour à la liste de vos Produits", "Index")
 </p>

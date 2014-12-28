@@ -6,6 +6,7 @@
 
 <div class="page-header">
     <h1>Tous les magasins <small> </small></h1>
+    Retrouvez ici tous nos vendeurs !
 </div>
 
 <div class="row">
@@ -22,7 +23,11 @@
                         <br>
                         <div class="col-md-2 col-sm-3 text-center">
                             <a class="story-img" href="#"><img src="/images/1_maraicher.jpg" style="width:100px;height:100px" class="img-circle"></a>
-                            <p class="lead">@magasin.Note Note</p>
+                            <p class="lead" style="color:#f5c50b;"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span></p>
                         </div>
                         <div class="col-md-10 col-sm-9">
                             <h3><a href="@Url.Action("Index","Magasin",new {id = @magasin.Id })">@magasin.NomMagasin</a></h3>
