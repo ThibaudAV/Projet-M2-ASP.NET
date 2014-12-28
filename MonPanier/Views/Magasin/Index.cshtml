@@ -11,7 +11,7 @@
             <div class="col-md-7">
                 <h1>
                     @Model.NomMagasin
-                    <p class="lead">@Model.DescriptionMagasin</p>
+                    <p class="lead">@Model.DescriptionMagasin @Model.NomMagasin</p>
                 </h1>
 
                 <p class="lead">
@@ -31,7 +31,7 @@
                 <div class="well well-lg">
                     <div class="row">
                         <div class="col-sm-12">
-                            Image
+                            <a class="story-img" href="#"><img src="/images/1_maraicher.jpg" style="width:100px;height:100px" class="img-circle"></a>
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                 <div class="row">
                     <br>
                     <div class="col-md-2 col-sm-3 text-center">
-                        <a class="story-img" href="#"><img src="//placehold.it/100" style="width:100px;height:100px" class="img-circle"></a>
+                        <a class="story-img" href="#"><img src="/images/orangesbio.jpg" style="width:100px;height:100px" class="img-circle"></a>
                         <p class="lead">@produit.Prix €</p>
                     </div>
                     <div class="col-md-10 col-sm-9">
@@ -71,9 +71,9 @@
                                     }
                                 </p>
                                 <ul class="list-inline">
-                                <li><a href="#">2 Days Ago</a></li>
-                                <li><a href="#"><i class="glyphicon glyphicon-comment"></i> 4 Comments</a></li>
-                                <li><a href="#"><i class="glyphicon glyphicon-share"></i> 34 Shares</a></li></ul>
+                                <li><a href="#">Il y a 2 jours</a></li>
+                                <li><a href="#"><i class="glyphicon glyphicon-comment"></i> 4 Commentaires</a></li>
+                                <li><a href="#"><i class="glyphicon glyphicon-share"></i> 34 Partages</a></li></ul>
                             </div>
                             <div class="col-xs-3">
                                 <a href="/" class="btn btn-success pull-right btnNext">Ajouter au Panier <i class="glyphicon glyphicon-shopping-cart"></i></a>
@@ -95,11 +95,6 @@
                 }
 
                 <!--/stories-->
-
-
-                <a href="/" class="btn btn-primary pull-right btnNext">More <i class="glyphicon glyphicon-chevron-right"></i></a>
-
-
             </div>
         </div>
 
