@@ -199,6 +199,8 @@
     <Content Include="Content\select2.css" />
     <Content Include="Content\select2.png" />
     <Content Include="Content\select2x2.png" />
+    <Content Include="images\1_maraicher.jpg" />
+    <Content Include="images\orangesbio.jpg" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\select2_locale_fr.js" />
     <Content Include="Scripts\TwitterBootstrapMvcJs.js" />

@@ -58,7 +58,7 @@ namespace MonPanier.Controllers
                 currentUser.NomMagasin = applicationUser.NomMagasin;
                 currentUser.DescriptionMagasin = applicationUser.DescriptionMagasin;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("My");
             }
             return View(applicationUser);
         }
