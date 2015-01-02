@@ -51,6 +51,28 @@ namespace MonPanier.Controllers
 
         }
 
+        // Get : la valisation du panier 
+        public ActionResult ValiderPanier()
+        {
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+
+            var paniers = db.Paniers.Include(p => p.ContenuPaniers).Where(p => p.ApplicationUser.Id == currentUser.Id);
+
+            return View(paniers.First());
+        }
+        // POST : Si l'utilisateur valide la commande . on supprime les elements de sont panier 
+        [HttpPost]
+        public ActionResult ValiderCommande()
+        {
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+
+            var paniers = db.Paniers.Include(p => p.ContenuPaniers).Where(p => p.ApplicationUser.Id == currentUser.Id);
+            
+            TempData["message"] = "Votre commande a bien été prise en compte";
+            TempData["type"] = "success";
+            return RedirectToAction("Index", "Home");
+        }
+        [Authorize]
         // GET: Le Panier de l'utilisateur
         public ActionResult Index()
         {

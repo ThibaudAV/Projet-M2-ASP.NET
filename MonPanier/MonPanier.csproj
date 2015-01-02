@@ -653,6 +653,7 @@
     <Content Include="Views\Panier\Details.cshtml" />
     <Content Include="Views\Panier\Edit.cshtml" />
     <Content Include="Views\Panier\Index.cshtml" />
+    <Content Include="Views\Panier\ValiderPanier.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
