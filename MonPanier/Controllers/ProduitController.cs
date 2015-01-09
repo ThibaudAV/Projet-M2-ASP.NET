@@ -65,6 +65,10 @@ namespace MonPanier.Controllers
                 Value = o.RegionId.ToString()
             });
 
+
+            TempData["message"] = "Le produit a bien été ajouter";
+            TempData["type"] = "success";
+
             ViewBag.CategorieId = new SelectList(db.Categories, "CategorieId", "Nom");
             return View(ProduitRegionsModel);
         }

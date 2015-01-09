@@ -12,7 +12,8 @@
 
     <div class="col-md-3">
         @Html.Bootstrap().ActionLinkButton("Retour a la listes", "Liste", "Region/" + @ViewBag.idRegion).Class("btn-success").RouteValues(new { id = "1" }).ButtonBlock().PrependIcon("glyphicon glyphicon-arrow-left")
-        @Html.Bootstrap().ActionLinkButton("Ajouter au Panier", "ModifierProduit").RouteValues(new { id = "1" }).ButtonBlock().PrependIcon("glyphicon glyphicon-shopping-cart")
+        @Html.Bootstrap().ActionLinkButton("Ajouet au Panier", "AddToMyPanier", "Panier").RouteValues(new { produitId = @Model.ProduitId, quantite = 1 }).ButtonBlock().PrependIcon("glyphicon glyphicon-shopping-cart")
+  
     </div>
 
     <div class="col-md-9">

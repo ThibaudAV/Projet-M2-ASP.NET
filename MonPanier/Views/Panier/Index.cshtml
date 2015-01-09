@@ -13,17 +13,27 @@
     <tr>
         <th>Nom</th>
         <th>Quantité</th>
+        <th>Prix</th>
         <th></th>
     </tr>
 
 @foreach (var item in Model.ContenuPaniers) {
+   
     <tr>
         <td>@Html.DisplayFor(modelItem => item.Produit.Nom)</td>
         <td>@Html.DisplayFor(modelItem => item.Quantite)</td>
+        <td>@( (item.Produit.Prix * item.Quantite).ToString("c"))
+        </td>
         <td>
             @Html.ActionLink("Supprimer", "Delete", new { id=item.ContenuPanierId })
         </td>
     </tr>
 }
-
+<tr>
+    <td></td>
+    <td><b>Total:</b></td>
+    <td><b>@Model.ContenuPaniers.Sum(x => x.Produit.Prix * x.Quantite).ToString("c")</b></td>
+    <td>@Html.Bootstrap().ActionLinkButton("Valider le panier", "ValiderPanier").Style(ButtonStyle.Primary).AppendIcon("glyphicon glyphicon-shopping-cart")</td>
+</tr>
 </table>
+

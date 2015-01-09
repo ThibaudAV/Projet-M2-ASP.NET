@@ -194,7 +194,6 @@
     <Compile Include="ViewModels\ProduitRegionsModel.cs" />
     <Compile Include="ViewModels\RegionProduitsViewModel.cs" />
     <Content Include="bin\TwitterBootstrapMVC5.dll" />
-    <Content Include="Content\bootstrap_theme.css" />
     <Content Include="Content\select2-bootstrap.css" />
     <Content Include="Content\select2-spinner.gif" />
     <Content Include="Content\select2.css" />
@@ -609,9 +608,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Commander\Home\About.cshtml" />
+    <Content Include="Views\Commander\Home\Contact.cshtml" />
+    <Content Include="Views\Commander\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
@@ -654,6 +653,7 @@
     <Content Include="Views\Panier\Details.cshtml" />
     <Content Include="Views\Panier\Edit.cshtml" />
     <Content Include="Views\Panier\Index.cshtml" />
+    <Content Include="Views\Panier\ValiderPanier.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

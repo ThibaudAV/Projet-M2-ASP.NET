@@ -10,6 +10,10 @@ namespace MonPanier.Controllers
     {
         public ActionResult Index()
         {
+            if (TempData["message"] != null) { 
+                @ViewBag.message = TempData["message"].ToString();
+                @ViewBag.type = TempData["type"].ToString();
+            }
             return View();
         }
 
