@@ -11,7 +11,7 @@ namespace MonPanier.Models
     //public class MagasinInitializer : DropCreateDatabaseIfModelChanges<MagasinContext>
     // CreateDatabaseIfNotExists
     // DropCreateDatabaseAlways
-    public class MagasinInitializer : DropCreateDatabaseAlways<MyContext>
+    public class MagasinInitializer : CreateDatabaseIfNotExists<MyContext>
     {
 
         protected override void Seed(MyContext context)
