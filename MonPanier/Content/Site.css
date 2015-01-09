@@ -61,3 +61,14 @@
 footer {
     margin: 50px 0;
 }
+
+#acceuil{
+    background-image : url("/images/img5_zoom.jpg");
+    background-repeat : no-repeat;
+}
+
+#titrejum
+{
+    background-color: rgba(255, 255, 255, 0.8);
+    padding : 10px 0px 10px 10px;
+}

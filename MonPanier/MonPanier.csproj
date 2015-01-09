@@ -194,12 +194,16 @@
     <Compile Include="ViewModels\ProduitRegionsModel.cs" />
     <Compile Include="ViewModels\RegionProduitsViewModel.cs" />
     <Content Include="bin\TwitterBootstrapMVC5.dll" />
+    <Content Include="Content\bootstrap_theme.css" />
     <Content Include="Content\select2-bootstrap.css" />
     <Content Include="Content\select2-spinner.gif" />
     <Content Include="Content\select2.css" />
     <Content Include="Content\select2.png" />
     <Content Include="Content\select2x2.png" />
     <Content Include="images\1_maraicher.jpg" />
+    <Content Include="images\carte.png" />
+    <Content Include="images\img5_zoom.jpg" />
+    <Content Include="images\oranges.jpg" />
     <Content Include="images\orangesbio.jpg" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\select2_locale_fr.js" />
@@ -608,9 +612,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Commander\Home\About.cshtml" />
-    <Content Include="Views\Commander\Home\Contact.cshtml" />
-    <Content Include="Views\Commander\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
@@ -654,6 +655,9 @@
     <Content Include="Views\Panier\Edit.cshtml" />
     <Content Include="Views\Panier\Index.cshtml" />
     <Content Include="Views\Panier\ValiderPanier.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

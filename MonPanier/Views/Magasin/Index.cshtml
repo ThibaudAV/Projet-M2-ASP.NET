@@ -76,8 +76,8 @@
                                 <li><a href="#"><i class="glyphicon glyphicon-share"></i> 34 Partages</a></li></ul>
                             </div>
                             <div class="col-xs-3">
-                                <a href="/" class="btn btn-success pull-right btnNext">Ajouter au Panier <i class="glyphicon glyphicon-shopping-cart"></i></a>
-
+                                @Html.Bootstrap().ActionLinkButton("Ajouter au Panier", "AddToMyPanier", "Panier").RouteValues(new { produitId = @produit.ProduitId, quantite = 1 }).ButtonBlock().PrependIcon("glyphicon glyphicon-shopping-cart")
+                                <br />
                                 @if (@ViewBag.isMyMagasin)
                                 {
                                     using (var dd = Html.Bootstrap().Begin(new DropDown("Action").Class("pull-right")))

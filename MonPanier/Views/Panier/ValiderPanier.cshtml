@@ -7,29 +7,29 @@
 <h2>Valider la commande</h2>
 <div class="row">
     <div class="col-md-6">
-        <h3>Information de payement </h3>
+        <h3>Informations de paiement </h3>
 @using (Html.BeginForm("ValiderCommande",null, FormMethod.Post))
 {
             <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓" /><input name="_method" type="hidden" value="PUT" /><input name="authenticity_token" type="hidden" value="qLZ9cScer7ZxqulsUWazw4x3cSEzv899SP/7ThPCOV8=" /></div>
             <div class='form-row'>
                 <div class='col-xs-12 form-group required'>
-                    <label class='control-label'>Name on Card</label>
+                    <label class='control-label'>Non du titulaire de la carte</label>
                     <input class='form-control' size='4' type='text'>
                 </div>
             </div>
             <div class='form-row'>
                 <div class='col-xs-12 form-group card required'>
-                    <label class='control-label'>Card Number</label>
+                    <label class='control-label'>Numéro de carte</label>
                     <input autocomplete='off' class='form-control card-number' size='20' type='text'>
                 </div>
             </div>
             <div class='form-row'>
                 <div class='col-xs-4 form-group cvc required'>
-                    <label class='control-label'>CVC</label>
+                    <label class='control-label'>Cryptogramme</label>
                     <input autocomplete='off' class='form-control card-cvc' placeholder='ex. 311' size='4' type='text'>
                 </div>
                 <div class='col-xs-4 form-group expiration required'>
-                    <label class='control-label'>Expiration</label>
+                    <label class='control-label'>Date d'expiration</label>
                     <input class='form-control card-expiry-month' placeholder='MM' size='2' type='text'>
                 </div>
                 <div class='col-xs-4 form-group expiration required'>
@@ -47,13 +47,13 @@
             </div>
             <div class='form-row'>
                 <div class='col-md-12 form-group'>
-                    <button class='form-control btn btn-primary submit-button' type='submit'>Pay »</button>
+                    <button class='form-control btn btn-primary submit-button' type='submit'>Payer »</button>
                 </div>
             </div>
             <div class='form-row'>
                 <div class='col-md-12 error form-group hide'>
                     <div class='alert-danger alert'>
-                        Please correct the errors and try again.
+                        Merci de corriger et d'essayer à nouveau.
                     </div>
                 </div>
             </div>

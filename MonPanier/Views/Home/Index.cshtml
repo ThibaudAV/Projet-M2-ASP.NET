@@ -2,29 +2,56 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>Partage ton Potage</h1>
-    <p class="lead">Partage ton Potage permet de vous réunir pour acheter directement aux producteurs de votre région.</p>
-    
-    <a href="#" class="btn btn-primary btn-lg">@Html.ActionLink("En Savoir plus", "About")</a>
+<div class="jumbotron" id="acceuil">
+    <div id="titrejum">
+        <h1>Partage ton Potage</h1>
+        <p class="lead">Partage ton Potage permet de vous réunir pour acheter directement aux producteurs de votre région.</p>
+        <p>
+            @Html.Bootstrap().ActionLinkButton("En Savoir plus", "About").PrependIcon("glyphicon glyphicon-info-sign").Style(ButtonStyle.Primary)
+        </p>
+    </div>
 </div>
 
 <div class="row">
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <div class="thumbnail">
+                <img src="/images/oranges.jpg" alt="">
+
+
+                <div class="caption">
+                    <h4 class="pull-right">3</h4>
+                    <h4>
+                        <p> Orange bio</p>
+                    </h4>
+                    <p>Variété : Navel (produit vendu au kilo)</p>
+
+                </div>
+              
+                <div class="ratings">
+                    <p>Fruits</p>
+                    <p class="pull-right">3 avis</p>
+                    <p>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
     <div class="col-md-4">
-        <h2>Consulter la carte des magasins</h2>
+        <img src="/images/carte.png" alt="">
         <p>
-            Retrouvez les participants à Partage ton Potage près de chez vous !
+        @Html.Bootstrap().ActionLinkButton("Commander", "Index", "Commander").Style(ButtonStyle.Primary).ButtonBlock()
         </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <blockquote>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
     </div>
 </div>
